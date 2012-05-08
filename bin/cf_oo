@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'cf_oo'
+require 'cf_oo/cli'
+
+Cfoo::CLI.start
