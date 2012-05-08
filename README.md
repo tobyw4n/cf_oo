@@ -1,3 +1,6 @@
+
+[![Build Status](http://travis-ci.org/brettweavnet/cf_oo.png)](http://travis-ci.org/brettweavnet/cf_oo)
+
 I'm cf\_oo.  Im an object oriented library to help managing Cloud Formation Stacks.
 
 Installation
