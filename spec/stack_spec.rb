@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Cfoo do
+  before do
+    config = { 
+               "prod" => { 
+                 "app1"=> { 
+                   "aws_access_key_id" => "XXXXXXXXXXXXXXXXXXXX", 
+                   "aws_secret_access_key"=>"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                 } 
+               }, 
+               "preprod" => { 
+                 "app1"=> { 
+                   "aws_access_key_id"=>"XXXXXXXXXXXXXXXXXXXX", 
+                   "aws_secret_access_key"=>"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+                 }
+               }
+             }
+    Cfoo.should_receive(:load_config).and_return(config)
+  end
+
   it "should create a new stack object" do
     [:connect_aws_cf, :connect_aws_compute, :connect_aws_elb, :connect_aws_storage].each do |aws|
        Cfoo::AWS.should_receive(aws)
