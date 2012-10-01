@@ -7,14 +7,15 @@ module Cfoo
 
       @options = Cfoo::CLI.parse_stack_command(:action => action)
 
+      app = @options[:app]
+      name = @options[:name]
+      environment = @options[:environment]
+
+      # Optional params
+      region = @options[:region] || 'us-west-1'
+
       case action
       when 'create','describe', 'delete', 'instances', 'resources', 'template', 'update'
-        app = @options[:app]
-        name = @options[:name]
-        environment = @options[:environment]
-
-        # Optional params
-        region = @options[:region] || 'us-west-1'
 
         # Create stack object
         @stack = Stack.new(:app => app,
@@ -93,7 +94,7 @@ module Cfoo
       when 'instances'
         puts @stack.instances.to_yaml
       when 'list'
-        puts Cfoo::Stack.list(:regions => ['us-west-1']).to_yaml
+        puts Cfoo::Stack.list(:regions => [region]).to_yaml
       when 'resources'
         puts @stack.resources.to_yaml
       when 'template'
