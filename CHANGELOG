@@ -1,0 +1,6 @@
+## HEAD:
+
+## 0.1.0:
+
+* Added rake task to run specs
+* Allow region to be visible from list
